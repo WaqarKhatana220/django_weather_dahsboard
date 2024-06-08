@@ -40,7 +40,7 @@ Go to http://localhost:8000/api/auth/register/ using your browser and register u
 
 # App Workflow
 Register -> Login -> Weather Dashboard (Main Page) <br>
-In the Weather Dashboard, enter a city name in the 'Search Weather' search bar to get weather details of the queried city. You can also see your 5 recent most searches upon clicking on the search bar. You can also add favorite cities using the "Add Favorite City" feature. Click on any of your favorite city for quickly accessing the weather data for it.
+In the Weather Dashboard, enter a city name in the 'Search Weather' search bar to get weather details of the queried city. You can also see your 5 recent most searches upon clicking on the search bar. You can also add favorite cities using the "Add Favorite City" feature. Click on any of your favorite cities to quickly access the weather data for it.
 ![Weather Dashboard](https://github.com/WaqarKhatana220/django_weather_dahsboard/blob/main/Readme%20Assets/Screenshot%202024-06-08%20223807.png)
 
 # Technologies
@@ -54,3 +54,7 @@ Other frameworks/libraries used are:
 - httpx (for async calls)
 - psycopg2-binary
 - requests
+
+The project follows the MTV architecture of Django. The project contains 2 apps that allow separation of concern;
+- `users` for user management and authentication
+- `weather` for Weather Dashboard functionality
