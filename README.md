@@ -1,6 +1,9 @@
 # Project Setup
 ## Django Project Setup
-Clone the repository and install the `requirements.txt` file to install the necessary packages on your machine.
+Clone the repository and `cd` into the `weather_project` directory. Install the necessary packages listed in the `requirements.txt` file using the following command:
+```
+pip install -r requirements.txt
+```
 
 ## Database Setup
 Make sure you have PostgreSQL setup on your machine. The database configuration settings are given in the `settings.py` file, and are listed here for convenience. Use this configuration to setup a database on your machine or change the cofiguration to match your database settings:
@@ -38,6 +41,7 @@ Go to http://localhost:8000/api/auth/register/ using your browser and register u
 # App Workflow
 Register -> Login -> Weather Dashboard (Main Page) <br>
 In the Weather Dashboard, enter a city name in the 'Search Weather' search bar to get weather details of the queried city. You can also see your 5 recent most searches upon clicking on the search bar. You can also add favorite cities using the "Add Favorite City" feature. Click on any of your favorite city for quickly accessing the weather data for it.
+![Weather Dashboard](https://github.com/WaqarKhatana220/django_weather_dahsboard/blob/main/Readme%20Assets/Screenshot%202024-06-08%20223807.png)
 
 # Technologies
 The main technology used to develope this project is Python and its libraries: <br>
