@@ -58,3 +58,7 @@ Other frameworks/libraries used are:
 The project follows the MTV architecture of Django. The project contains 2 apps that allow separation of concern;
 - `users` for user management and authentication
 - `weather` for Weather Dashboard functionality
+
+## Asynchronous API Calls
+Django’s asynchronous views have been used to to make non-blocking API calls, ensuring better server performance and responsiveness.
+
