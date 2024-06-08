@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/weather.css' %}">
+
+</head>
+<body>
+    
+    <div class="container">
+        <div class="container">
+            <div class="row justify-content-end">
+                <div class="col-auto">
+                    <a href="/api/auth/logout/" class="btn btn-danger" style="margin-top: 5px;">Logout</a>
+                </div>
+            </div>
+        <h1 class="text-center my-4">Weather App</h1>
+
+        <div class="row">
+            <!-- Left Column -->
+            <div class="col-lg-8 mb-4">
+                <div class="card mb-4">
+                    <div class="card-header">Search Weather</div>
+                    <div class="card-body">
+                        <form method="GET" action="/api/weather/">
+                            <div class="form-group dropdown-container">
+                                <label for="city">City</label>
+                                <input type="text" class="form-control" id="city" name="city" placeholder="Enter city name" required>
+                                {% if recent_searches %}
+                                <div class="dropdown">
+                                    {% for search in recent_searches|slice:":5" %}
+                                    <div class="dropdown-item">{{ search }}</div>
+                                    {% endfor %}
+                                </div>
+                                {% endif %}
+                            </div>
+                            <button type="submit" class="btn btn-primary">Search</button>
+                        </form>
+                    </div>
+                </div>
+
+
+                {% if weather_data %}
+                <div class="card mb-4">
+                    <div class="card-header">Weather in {{ weather_data.name }}</div>
+                    <div class="card-body">
+                        <p>Temperature: {{ weather_data.main.temp }} °C</p>
+                        <p>Humidity: {{ weather_data.main.humidity }}%</p>
+                        <p>Wind Speed: {{ weather_data.wind.speed }} m/s</p>
+                        <p>Condition: {{ weather_data.weather.0.main }}</p>
+                    </div>
+                </div>
+                {% elif error %}
+                <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
+                {% endif %}
+            </div>
+
+            <!-- Right Column -->
+            <div class="col-lg-4 mb-4">
+                <div class="card mb-4">
+                    <div class="card-header">Add Favorite City</div>
+                    <div class="card-body">
+                        <form method="POST" action="/api/weather/">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="city2">City</label>
+                                <input type="text" class="form-control" id="city2" name="city2" placeholder="Enter city name" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Add Favorite</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="card mb-4">
+                    <div class="card-header">Favorite Cities</div>
+                    <ul class="list-group list-group-flush">
+                        {% for city in favorite_cities %}
+                        <li class="list-group-item">
+                            <form method="GET" action="/api/weather/">
+                                {% csrf_token %}
+                                <input type="hidden" name="city" value="{{ city.city_name }}">
+                                <button type="submit" class="btn btn-link">{{ city.city_name }}</button>
+                            </form>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
