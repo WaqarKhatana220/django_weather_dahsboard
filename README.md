@@ -44,7 +44,7 @@ In the Weather Dashboard, enter a city name in the 'Search Weather' search bar t
 ![Weather Dashboard](https://github.com/WaqarKhatana220/django_weather_dahsboard/blob/main/Readme%20Assets/Screenshot%202024-06-08%20223807.png)
 
 # Technologies
-The main technology used to develope this project is Python and its libraries: <br>
+The main technology used to develope this project is Python and its libraries: <br><br>
 **Backend:** Django <br>
 **Frontend:** Django Templating Engine <br>
 **Database:** Postgres (with Django ORM) <br><br>
